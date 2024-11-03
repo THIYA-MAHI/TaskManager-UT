@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="d-flex justify-content-between mb-3">
+    <div>
+      <input type="text" class="form-control" placeholder="Search User..." [(ngModel)]="searchText">
+    </div>
+
+    <div>
+      <button type="button" class="btn btn-dark" [routerLink]="['/add-user']">
+        New User
+      </button>
+    </div>
+  </div>
+
+  <table class="table table-responsive table-bordered">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Password</th>
+        <th>Address</th>
+        <th>Task Count</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.password}}</td>
+        <td>
+          {{user.address?.addressLine1}},
+          {{user.address?.addressLine2}},
+          {{user.address?.city}}
+        </td>
+        <td>{{user.tasks.length}}</td>
+        <td>
+
+          <button type="button" class="btn btn-primary me-3 btn-sm" (click)="onEdit(user.id)">
+            <i class="bi bi-pencil"></i></button>
+
+            <button type="button" class="btn btn-danger btn-sm" (click)="onDelete(user.id)">
+              <i class="bi bi-trash"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
+
